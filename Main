@@ -1,0 +1,25 @@
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        System.out.println("Введите путь до файла и имя нового файла через пробел");
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        String link = br.readLine();
+        String[] str = link.split(" ");
+        String way = str[0];
+        String name = str[1];
+
+        System.out.println("Ваш путь: " + way + "\nВаше название файла: " + name);
+
+        try {
+            BufferedImage image = ImageIO.read(new File(way));
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        BufferedWriter bw = new BufferedWriter(new FileWriter(name));
+    }
+}
